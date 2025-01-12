@@ -6,7 +6,7 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className={`transition-colors ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white'}`}>
+    <header className={`transition-colors ${isDarkMode ? 'bg-[#1C1C1C] text-white' : 'bg-white'}`}>
       <div className="flex items-center justify-between p-4">
         <div className="flex items-center gap-2">
           <div className="grid grid-cols-2 gap-1">

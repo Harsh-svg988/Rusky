@@ -1,7 +1,25 @@
 import { TaskCard } from '../tasks/TaskCard';
+import { useTheme } from '../../context/ThemeContext';
 
 export const Quadrant = ({ title, type, tasks, onDeleteTask, onUpdateTask }) => {
+  const { isDarkMode } = useTheme();
+  
   const getQuadrantStyle = () => {
+    if (isDarkMode) {
+      switch (type) {
+        case 'DO_FIRST':
+          return 'bg-[#1C3829] text-[#34D399]';
+        case 'DO_LATER':
+          return 'bg-[#1B3741] text-[#38BDF8]';
+        case 'DELEGATE':
+          return 'bg-[#3F371D] text-[#FCD34D]';
+        case 'ELIMINATE':
+          return 'bg-[#3D1E1E] text-[#F87171]';
+        default:
+          return 'bg-gray-800 text-gray-200';
+      }
+    }
+    // Light mode styles remain unchanged
     switch (type) {
       case 'DO_FIRST':
         return 'border-green-500 bg-green-200 text-green-500';
@@ -17,7 +35,7 @@ export const Quadrant = ({ title, type, tasks, onDeleteTask, onUpdateTask }) => 
   };
 
   return (
-    <div className="p-4 border border-black min-h-[300px] flex flex-col items-center">
+    <div className="p-4 border ${isDarkMode ? 'border-gray-800' : 'border-black'} min-h-[300px] flex flex-col items-center">
       <span className={`font-bold text-sm rounded-md px-3 py-2 uppercase text-center mb-4 ${getQuadrantStyle()}`}>
         {title}
       </span>

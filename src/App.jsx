@@ -23,7 +23,7 @@ const AppContent = () => {
   };
 
   return (
-    <div className={`min-h-screen w-full ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-50'}`}>
+    <div className={`min-h-screen w-full ${isDarkMode ? 'bg-[#1C1C1C] text-white' : 'bg-gray-50'}`}>
       <Header />
       <main className="min-h-screen flex flex-col ">
         <div className="grid grid-cols-1 md:grid-cols-2  flex-grow relative w-full">
