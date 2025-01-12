@@ -3,6 +3,12 @@ import { useState, useCallback } from 'react';
 export const useTask = () => {
   const [tasks, setTasks] = useState([]);
 
+  const updateTask = useCallback((taskId, newContent) => {
+    setTasks(prev => prev.map(task => 
+      task.id === taskId ? { ...task, content: newContent } : task
+    ));
+  }, []);
+
   const addTask = useCallback((content, quadrant = 'DO_FIRST') => {
     const newTask = {
       id: Date.now().toString(),
@@ -26,6 +32,7 @@ export const useTask = () => {
   return {
     tasks,
     addTask,
+    updateTask, 
     moveTask,
     deleteTask,
   };

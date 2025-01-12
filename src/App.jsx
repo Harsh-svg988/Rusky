@@ -8,7 +8,7 @@ import { ThemeProvider, useTheme } from './context/ThemeContext';
 
 const AppContent = () => {
   const [isTaskFormOpen, setIsTaskFormOpen] = useState(false);
-  const { tasks, addTask, deleteTask } = useTask();
+  const { tasks, addTask, deleteTask,updateTask } = useTask();
   const { isDarkMode } = useTheme();
 
   const quadrants = [
@@ -25,8 +25,8 @@ const AppContent = () => {
   return (
     <div className={`min-h-screen w-full ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-50'}`}>
       <Header />
-      <main className="min-h-screen flex flex-col p-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-grow relative">
+      <main className="min-h-screen flex flex-col ">
+        <div className="grid grid-cols-1 md:grid-cols-2  flex-grow relative w-full">
           {quadrants.map(({ type, title }) => (
             <Quadrant
               key={type}
@@ -34,6 +34,7 @@ const AppContent = () => {
               title={title}
               tasks={getTasksByQuadrant(type)}
               onDeleteTask={deleteTask}
+              onUpdateTask={updateTask}
             />
           ))}
 

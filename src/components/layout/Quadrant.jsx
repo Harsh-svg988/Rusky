@@ -1,6 +1,6 @@
 import { TaskCard } from '../tasks/TaskCard';
 
-export const Quadrant = ({ title, type, tasks, onDeleteTask }) => {
+export const Quadrant = ({ title, type, tasks, onDeleteTask, onUpdateTask }) => {
   const getQuadrantStyle = () => {
     switch (type) {
       case 'DO_FIRST':
@@ -17,16 +17,17 @@ export const Quadrant = ({ title, type, tasks, onDeleteTask }) => {
   };
 
   return (
-    <div className="p-4 border border-black min-h-[300px]">
-      <h2 className={`font-bold text-sm rounded-md px-3 py-2 uppercase text-center mb-4 ${getQuadrantStyle()}`}>
+    <div className="p-4 border border-black min-h-[300px] flex flex-col items-center">
+      <span className={`font-bold text-sm rounded-md px-3 py-2 uppercase text-center mb-4 ${getQuadrantStyle()}`}>
         {title}
-      </h2>
-      <div className="space-y-2 overflow-y-auto max-h-[calc(100vh-300px)] md:max-h-[calc(50vh-100px)]">
+      </span>
+      <div className="space-y-2 overflow-y-auto max-h-[calc(100vh-300px)] md:max-h-[calc(50vh-100px)] w-full">
         {tasks.map(task => (
           <TaskCard
             key={task.id}
             task={task}
             onDelete={onDeleteTask}
+            onUpdate={onUpdateTask} 
           />
         ))}
       </div>
